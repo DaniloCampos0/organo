@@ -1,19 +1,10 @@
 import { useState } from 'react'
 import CampoTexto from '../CampoTexto'
 import ListaSuspensa from '../ListaSuspensa'
-import Botao from '../botao'
+import Botao from '../Botao'
 import './Formulario.css'
 
 const Formulario = (props) => {
-
-    const times = [
-        'São Paulo',
-        'Rio de Janeiro',
-        'Fortaleza',
-        'Bahia',
-        'Minas Gerais',
-        'Espirito Santo'
-    ]
 
     const [nome, setNome] = useState('')
     const [cargo, setCargo] = useState('')
@@ -25,6 +16,10 @@ const Formulario = (props) => {
         props.aoColaboradorCadastrado({
             nome, cargo, imagem, time
         })
+        setNome('')
+        setCargo('')
+        setImagem('')
+        setTime('')
     }
 
     return (
@@ -53,7 +48,7 @@ const Formulario = (props) => {
                 />
                 <ListaSuspensa
                     label="Time"
-                    itens={times}
+                    itens={props.times}
                     valor={time}
                     aoAlterado={valor => setTime(valor)} />
                 <Botao>
